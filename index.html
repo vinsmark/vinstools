@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools Hub</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body class="bg-gradient-to-br from-gray-50 via-white to-gray-100 min-h-screen">
+
+    <nav class="backdrop-blur-lg bg-white/70 border-b sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text">
+                vinstools</div>
+
+            <button id="menu-btn" class="md:hidden text-gray-700 text-xl">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="hidden md:flex space-x-8 text-gray-700 font-medium">
+                <li><a href="#" class="hover:text-blue-600 transition">Home</a></li>
+                <li><a href="#" class="hover:text-blue-600 transition">Tools</a></li>
+                <li><a href="#" class="hover:text-blue-600 transition">About</a></li>
+            </ul>
+        </div>
+
+        <div id="mobile-menu" class="hidden px-6 pb-4 space-y-2 md:hidden">
+            <a href="#" class="block py-2 text-gray-700">Home</a>
+            <a href="#" class="block py-2 text-gray-700">Tools</a>
+            <a href="#" class="block py-2 text-gray-700">About</a>
+        </div>
+    </nav>
+
+    <section class="text-center py-16 px-4">
+        <h1
+            class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 text-transparent bg-clip-text">
+            All-in-One Tools
+        </h1>
+        <p class="text-gray-500 mt-4 max-w-xl mx-auto">
+            Fast, clean, and powerful web tools in one place
+        </p>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 pb-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+
+        <a href="https://vinsmark.github.io/image-to-text/"
+            class="group bg-white/60 backdrop-blur-xl border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300">
+            <div
+                class="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-100 text-blue-600 text-xl mb-4 group-hover:scale-110 transition">
+                <i class="fas fa-image"></i>
+            </div>
+            <h2 class="font-semibold text-lg mb-2">Image to Text</h2>
+            <p class="text-gray-500 text-sm">Extract text from images instantly</p>
+        </a>
+
+        <a href="https://vinsmark.github.io/image-pdf/"
+            class="group bg-white/60 backdrop-blur-xl border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300">
+            <div
+                class="w-12 h-12 flex items-center justify-center rounded-xl bg-red-100 text-red-500 text-xl mb-4 group-hover:scale-110 transition">
+                <i class="fas fa-file-pdf"></i>
+            </div>
+            <h2 class="font-semibold text-lg mb-2">Image to PDF</h2>
+            <p class="text-gray-500 text-sm">Convert images into PDF files</p>
+        </a>
+
+        <a href="https://vinsmark.github.io/pdf-merger/"
+            class="group bg-white/60 backdrop-blur-xl border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300">
+            <div
+                class="w-12 h-12 flex items-center justify-center rounded-xl bg-purple-100 text-purple-600 text-xl mb-4 group-hover:scale-110 transition">
+                <i class="fas fa-object-group"></i>
+            </div>
+            <h2 class="font-semibold text-lg mb-2">PDF Merger</h2>
+            <p class="text-gray-500 text-sm">Combine multiple PDFs into one</p>
+        </a>
+
+        <a href="https://vinsmark.github.io/QR-Generator/"
+            class="group bg-white/60 backdrop-blur-xl border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300">
+            <div
+                class="w-12 h-12 flex items-center justify-center rounded-xl bg-green-100 text-green-600 text-xl mb-4 group-hover:scale-110 transition">
+                <i class="fas fa-qrcode"></i>
+            </div>
+            <h2 class="font-semibold text-lg mb-2">QR Generator</h2>
+            <p class="text-gray-500 text-sm">Generate QR codes instantly</p>
+        </a>
+
+        <a href="https://vinsmark.github.io/qr-to-text/"
+            class="group bg-white/60 backdrop-blur-xl border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300">
+            <div
+                class="w-12 h-12 flex items-center justify-center rounded-xl bg-yellow-100 text-yellow-500 text-xl mb-4 group-hover:scale-110 transition">
+                <i class="fas fa-barcode"></i>
+            </div>
+            <h2 class="font-semibold text-lg mb-2">QR to Text</h2>
+            <p class="text-gray-500 text-sm">Decode QR codes easily</p>
+        </a>
+
+        <a href="https://vinsmark.github.io/URL-Shortener/"
+            class="group bg-white/60 backdrop-blur-xl border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300">
+            <div
+                class="w-12 h-12 flex items-center justify-center rounded-xl bg-indigo-100 text-indigo-600 text-xl mb-4 group-hover:scale-110 transition">
+                <i class="fas fa-link"></i>
+            </div>
+            <h2 class="font-semibold text-lg mb-2">URL Shortener</h2>
+            <p class="text-gray-500 text-sm">Shorten long links quickly</p>
+        </a>
+
+    </section>
+
+    <footer class="text-center py-8 text-gray-400 text-sm">
+        © 2026 vinstools • Simple. Fast. Free.
+    </footer>
+
+    <script>
+        const btn = document.getElementById('menu-btn')
+        const menu = document.getElementById('mobile-menu')
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden')
+        })
+    </script>
+
+</body>
+
+</html>
