@@ -4,125 +4,459 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tools Hub</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>vinstools</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
+        :root {
+            --bg: #fafafa;
+            --dot-color: #d1d5db;
+            --border: #e5e7eb;
+            --text: #111111;
+            --text-muted: #6b7280;
+            --text-light: #9ca3af;
+            --accent: #111111;
+            --card-bg: #ffffff;
+            --radius: 12px;
+            --nav-h: 60px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            background-image: radial-gradient(circle, var(--dot-color) 1.2px, transparent 1.2px);
+            background-size: 22px 22px;
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            height: var(--nav-h);
+            background: rgba(250, 250, 250, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 4vw, 32px);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .logo span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--text);
+            border-radius: 50%;
+            margin-left: 2px;
+            vertical-align: middle;
+            position: relative;
+            top: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: clamp(16px, 3vw, 32px);
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            padding: 7px 10px;
+            font-size: 15px;
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            padding: 12px clamp(16px, 4vw, 32px) 16px;
+            gap: 4px;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .hero {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: clamp(48px, 10vw, 96px) clamp(16px, 4vw, 32px) clamp(32px, 6vw, 56px);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            border-radius: 100px;
+            padding: 5px 12px;
+            margin-bottom: 20px;
+        }
+
+        .hero-badge i {
+            font-size: 10px;
+        }
+
+        .hero h1 {
+            font-size: clamp(28px, 6vw, 52px);
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            color: var(--text);
+            max-width: 560px;
+        }
+
+        .hero p {
+            margin-top: 14px;
+            font-size: clamp(14px, 2.5vw, 16px);
+            color: var(--text-muted);
+            max-width: 420px;
+            line-height: 1.65;
+        }
+
+        .section-label {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 4vw, 32px);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .section-label span {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-light);
+        }
+
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .tools-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 4vw, 32px) clamp(48px, 10vw, 80px);
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+            gap: 16px;
+        }
+
+        .tool-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: clamp(18px, 4vw, 24px);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card:hover {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            transform: translateY(-3px);
+            border-color: #c9cdd4;
+        }
+
+        .tool-card-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .tool-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .tool-arrow {
+            font-size: 14px;
+            color: var(--text-light);
+            transition: color 0.15s, transform 0.15s;
+        }
+
+        .tool-card:hover .tool-arrow {
+            color: var(--text);
+            transform: translate(2px, -2px);
+        }
+
+        .tool-card h2 {
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+            color: var(--text);
+        }
+
+        .tool-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            background: rgba(250, 250, 250, 0.9);
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: clamp(20px, 4vw, 28px) clamp(16px, 4vw, 32px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .footer-inner p {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .footer-dot {
+            display: inline-flex;
+            width: 6px;
+            height: 6px;
+            background: var(--text-light);
+            border-radius: 50%;
+            margin: 0 6px;
+            vertical-align: middle;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+        }
+    </style>
 </head>
 
-<body class="bg-gradient-to-br from-gray-50 via-white to-gray-100 min-h-screen">
+<body>
 
-    <nav class="backdrop-blur-lg bg-white/70 border-b sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text">
-                vinstools</div>
-
-            <button id="menu-btn" class="md:hidden text-gray-700 text-xl">
-                <i class="fas fa-bars"></i>
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="logo">vinstools<span></span></a>
+            <button class="menu-btn" id="menu-btn" aria-label="Toggle menu">
+                <i class="fas fa-bars" id="menu-icon"></i>
             </button>
-
-            <ul class="hidden md:flex space-x-8 text-gray-700 font-medium">
-                <li><a href="#" class="hover:text-blue-600 transition">Home</a></li>
-                <li><a href="#" class="hover:text-blue-600 transition">Tools</a></li>
-                <li><a href="#" class="hover:text-blue-600 transition">About</a></li>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Tools</a></li>
+                <li><a href="#">About</a></li>
             </ul>
-        </div>
-
-        <div id="mobile-menu" class="hidden px-6 pb-4 space-y-2 md:hidden">
-            <a href="#" class="block py-2 text-gray-700">Home</a>
-            <a href="#" class="block py-2 text-gray-700">Tools</a>
-            <a href="#" class="block py-2 text-gray-700">About</a>
         </div>
     </nav>
 
-    <section class="text-center py-16 px-4">
-        <h1
-            class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 text-transparent bg-clip-text">
-            All-in-One Tools
-        </h1>
-        <p class="text-gray-500 mt-4 max-w-xl mx-auto">
-            Fast, clean, and powerful web tools in one place
-        </p>
-    </section>
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#">Home</a>
+        <a href="#">Tools</a>
+        <a href="#">About</a>
+    </div>
 
-    <section class="max-w-7xl mx-auto px-4 pb-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="hero">
+        <div class="hero-badge"><i class="fas fa-bolt"></i> Free web utilities</div>
+        <h1>All-in-One Tools Hub</h1>
+        <p>Fast, clean, and powerful web tools — no installs, no sign-ups. Just open and use.</p>
+    </div>
 
-        <a href="https://vinsmark.github.io/image-to-text/"
-            class="group bg-white/60 backdrop-blur-xl border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300">
-            <div
-                class="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-100 text-blue-600 text-xl mb-4 group-hover:scale-110 transition">
-                <i class="fas fa-image"></i>
+    <div class="section-label">
+        <span>Tools</span>
+    </div>
+
+    <div class="tools-grid">
+
+        <a href="https://vinsmark.github.io/image-to-text/" class="tool-card">
+            <div class="tool-card-top">
+                <div class="tool-icon" style="color:#2563eb;">
+                    <i class="fas fa-image"></i>
+                </div>
+                <i class="fas fa-arrow-up-right tool-arrow"></i>
             </div>
-            <h2 class="font-semibold text-lg mb-2">Image to Text</h2>
-            <p class="text-gray-500 text-sm">Extract text from images instantly</p>
+            <div>
+                <h2>Image to Text</h2>
+                <p>Extract text from any image instantly using OCR.</p>
+            </div>
         </a>
 
-        <a href="https://vinsmark.github.io/image-pdf/"
-            class="group bg-white/60 backdrop-blur-xl border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300">
-            <div
-                class="w-12 h-12 flex items-center justify-center rounded-xl bg-red-100 text-red-500 text-xl mb-4 group-hover:scale-110 transition">
-                <i class="fas fa-file-pdf"></i>
+        <a href="https://vinsmark.github.io/image-pdf/" class="tool-card">
+            <div class="tool-card-top">
+                <div class="tool-icon" style="color:#dc2626;">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <i class="fas fa-arrow-up-right tool-arrow"></i>
             </div>
-            <h2 class="font-semibold text-lg mb-2">Image to PDF</h2>
-            <p class="text-gray-500 text-sm">Convert images into PDF files</p>
+            <div>
+                <h2>Image to PDF</h2>
+                <p>Convert one or multiple images into a PDF file.</p>
+            </div>
         </a>
 
-        <a href="https://vinsmark.github.io/pdf-merger/"
-            class="group bg-white/60 backdrop-blur-xl border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300">
-            <div
-                class="w-12 h-12 flex items-center justify-center rounded-xl bg-purple-100 text-purple-600 text-xl mb-4 group-hover:scale-110 transition">
-                <i class="fas fa-object-group"></i>
+        <a href="https://vinsmark.github.io/pdf-merger/" class="tool-card">
+            <div class="tool-card-top">
+                <div class="tool-icon" style="color:#7c3aed;">
+                    <i class="fas fa-object-group"></i>
+                </div>
+                <i class="fas fa-arrow-up-right tool-arrow"></i>
             </div>
-            <h2 class="font-semibold text-lg mb-2">PDF Merger</h2>
-            <p class="text-gray-500 text-sm">Combine multiple PDFs into one</p>
+            <div>
+                <h2>PDF Merger</h2>
+                <p>Combine multiple PDF documents into a single file.</p>
+            </div>
         </a>
 
-        <a href="https://vinsmark.github.io/QR-Generator/"
-            class="group bg-white/60 backdrop-blur-xl border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300">
-            <div
-                class="w-12 h-12 flex items-center justify-center rounded-xl bg-green-100 text-green-600 text-xl mb-4 group-hover:scale-110 transition">
-                <i class="fas fa-qrcode"></i>
+        <a href="https://vinsmark.github.io/QR-Generator/" class="tool-card">
+            <div class="tool-card-top">
+                <div class="tool-icon" style="color:#16a34a;">
+                    <i class="fas fa-qrcode"></i>
+                </div>
+                <i class="fas fa-arrow-up-right tool-arrow"></i>
             </div>
-            <h2 class="font-semibold text-lg mb-2">QR Generator</h2>
-            <p class="text-gray-500 text-sm">Generate QR codes instantly</p>
+            <div>
+                <h2>QR Generator</h2>
+                <p>Generate QR codes from any link or text instantly.</p>
+            </div>
         </a>
 
-        <a href="https://vinsmark.github.io/qr-to-text/"
-            class="group bg-white/60 backdrop-blur-xl border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300">
-            <div
-                class="w-12 h-12 flex items-center justify-center rounded-xl bg-yellow-100 text-yellow-500 text-xl mb-4 group-hover:scale-110 transition">
-                <i class="fas fa-barcode"></i>
+        <a href="https://vinsmark.github.io/qr-to-text/" class="tool-card">
+            <div class="tool-card-top">
+                <div class="tool-icon" style="color:#d97706;">
+                    <i class="fas fa-barcode"></i>
+                </div>
+                <i class="fas fa-arrow-up-right tool-arrow"></i>
             </div>
-            <h2 class="font-semibold text-lg mb-2">QR to Text</h2>
-            <p class="text-gray-500 text-sm">Decode QR codes easily</p>
+            <div>
+                <h2>QR to Text</h2>
+                <p>Decode QR codes via upload or live camera scan.</p>
+            </div>
         </a>
 
-        <a href="https://vinsmark.github.io/URL-Shortener/"
-            class="group bg-white/60 backdrop-blur-xl border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300">
-            <div
-                class="w-12 h-12 flex items-center justify-center rounded-xl bg-indigo-100 text-indigo-600 text-xl mb-4 group-hover:scale-110 transition">
-                <i class="fas fa-link"></i>
+        <a href="https://vinsmark.github.io/URL-Shortener/" class="tool-card">
+            <div class="tool-card-top">
+                <div class="tool-icon" style="color:#4f46e5;">
+                    <i class="fas fa-link"></i>
+                </div>
+                <i class="fas fa-arrow-up-right tool-arrow"></i>
             </div>
-            <h2 class="font-semibold text-lg mb-2">URL Shortener</h2>
-            <p class="text-gray-500 text-sm">Shorten long links quickly</p>
+            <div>
+                <h2>URL Shortener</h2>
+                <p>Shorten long URLs into clean, shareable links.</p>
+            </div>
         </a>
 
-    </section>
+    </div>
 
-    <footer class="text-center py-8 text-gray-400 text-sm">
-        © 2026 vinstools • Simple. Fast. Free.
+    <footer>
+        <div class="footer-inner">
+            <p>© 2026 <strong>vinstools</strong></p>
+            <p>Simple<span class="footer-dot"></span>Fast<span class="footer-dot"></span>Free</p>
+        </div>
     </footer>
 
     <script>
-        const btn = document.getElementById('menu-btn')
-        const menu = document.getElementById('mobile-menu')
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
 
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden')
-        })
+        menuBtn.addEventListener('click', () => {
+            const open = mobileMenu.classList.toggle('open');
+            menuIcon.className = open ? 'fas fa-xmark' : 'fas fa-bars';
+        });
     </script>
-
 </body>
 
 </html>
